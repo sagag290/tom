@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ท่อมมั้ย Zone Pathum</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* ป้องกัน scrollbar ที่ไม่จำเป็น */
+            position: relative;
+        }
+
+        /* --- พื้นหลัง Particles.js --- */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            background-color: #0c0c1e;
+            background-image: linear-gradient(135deg, #0d122e 0%, #3f1e5f 50%, #832d5e 100%);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.6);
+            border: 2px solid #fff;
+            position: relative;
+            z-index: 1; /* ทำให้เนื้อหาอยู่บนพื้นหลัง */
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #ffeb3b;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-contact {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #4caf50;
+        }
+
+        .contact-info p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        .contact-info .brand-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4caf50;
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .locations {
+            text-align: right;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .locations h2 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 5px #000;
+        }
+
+        .locations p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+
+        .main-content {
+            text-align: center;
+        }
+
+        .zone-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #03a9f4;
+            margin: 20px 0;
+            text-shadow: 0 0 10px #03a9f4, 0 0 20px #03a9f4;
+        }
+        
+        .promo-card {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .stamp-circle {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 5px solid #ff4081;
+            box-shadow: 0 0 15px #ff4081, inset 0 0 10px rgba(0, 0, 0, 0.2);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .free-item-container {
+            grid-column: span 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .free-item {
+            border: 5px dashed #ffeb3b;
+            padding: 20px 40px;
+            background-color: rgba(255, 235, 59, 0.2);
+            border-radius: 10px;
+        }
+
+        .free-item span {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffeb3b;
+            text-shadow: 3px 3px 6px #000;
+        }
+        
+        .promo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #fff;
+            background: -webkit-linear-gradient(45deg, #f44336, #ffeb3b, #4caf50);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 680px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .locations {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .promo-card {
+                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            }
+            .stamp-circle {
+                width: 70px;
+                height: 70px;
+            }
+            .free-item-container {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Element สำหรับพื้นหลัง -->
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-contact">
+                <!-- ใช้โลโก้จาก Imgur เพื่อให้แสดงผลได้ -->
+                <img src="https://i.imgur.com/eNxtaGZ.png" alt="ท่อมมั้ย Logo" class="logo">
+                <div class="contact-info">
+                    <p class="brand-name">ท่อมมั้ย</p>
+                    <p>FB: Tapanapong Munphanit</p>
+                    <p>โทร: 0902416819</p>
+                </div>
+            </div>
+            <div class="locations">
+                <h2>สาขา</h2>
+                <p><b>สาขา 1:</b> หน้าเรือนอาหารบ้านกลาง</p>
+                <p><b>สาขา 2:</b> ซอยข้างธนาคารกรุงไทยสามโคก</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="zone-title">Zone Pathum</h1>
+            
+            <div class="promo-card">
+                <!-- ใส่ URL รูปขวดน้ำลงใน style -->
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/6XzJ9yS.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/N8g1g6m.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/P0T3k3A.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/qR8j8y5.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/Y3h7z3H.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/6XzJ9yS.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/N8g1g6m.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/P0T3k3A.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/qR8j8y5.png');"></div>
+                <div class="stamp-circle" style="background-image: url('https://i.imgur.com/Y3h7z3H.png');"></div>
+            </div>
+            
+            <div class="free-item-container">
+                <div class="free-item">
+                    <span>FREE</span>
+                </div>
+            </div>
+
+            <p class="promo-text">น้ำผลไม้ซื้อครบ 10 ขวด ฟรี 1 ขวด</p>
+        </div>
+    </div>
+    
+    <!-- Script สำหรับ Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 20, // จำนวนขวด
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "shape": {
+                    "type": "image",
+                    "image": {
+                        // URL รูปขวดสำหรับพื้นหลัง (ควรเป็นไฟล์ PNG พื้นหลังโปร่งใส)
+                        "src": "https://i.imgur.com/P0T3k3A.png", 
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.6,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 50, // ขนาดของขวด
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 20,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 3, // ความเร็วในการเคลื่อนที่
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                 "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
